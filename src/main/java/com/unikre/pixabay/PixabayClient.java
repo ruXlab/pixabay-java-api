@@ -35,7 +35,7 @@ public class PixabayClient {
     @Getter
     protected int remainingSecsToResetLimit;
 
-    private static PixabayService pixabayService;
+    private PixabayService pixabayService;
 
     private static final Gson gson = new Gson();
 
@@ -45,13 +45,16 @@ public class PixabayClient {
     private static final Type VIDEO_RESULT_TYPE = new TypeToken<Result<Image>>() {
     }.getType();
 
-    public PixabayClient(String apiKey) {
+    public PixabayClient(String apiKey, Retrofit retrofit) {
         setApiKey(apiKey);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://pixabay.com")
-                .build();
         pixabayService = retrofit.create(PixabayService.class);
+    }
+
+    public PixabayClient(String apiKey) {
+        this(apiKey, new Retrofit.Builder()
+                .baseUrl("https://pixabay.com")
+                .build());
     }
 
     private void parseRateLimit(Response response) {
