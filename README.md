@@ -1,9 +1,32 @@
+[![](https://jitpack.io/v/ruXlab/pixabay-java-api.svg)](https://jitpack.io/#ruXlab/pixabay-java-api)
+
 # Intro
 This is JAVA wrapper for Pixabay image/video search (https://pixabay.com/api/docs/)
 
 Sign up for free API key (https://pixabay.com/en/accounts/register/), and have fun.
 
 # Usage
+
+## Add dependency
+
+At the moment this project is built and hosted on [jitpack](https://jitpack.io/#ruXlab/pixabay-java-api).
+
+To add library to your project update your `gradle.build`:
+
+```gradle
+repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.ruXlab:pixabay-java-api:-SNAPSHOT'
+}
+```
+
+You may want to replace `-SNAPSHOT` with concrete version, see the badge above
+
+
 
 ## Initialization
 ```java
