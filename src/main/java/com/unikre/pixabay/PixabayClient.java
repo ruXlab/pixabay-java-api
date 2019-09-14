@@ -27,13 +27,13 @@ public class PixabayClient {
     protected String apiKey;
 
     @Getter
-    protected int requestsLimitIn30min;
+    protected double requestsLimitIn30min;
 
     @Getter
-    protected int remainingRequests;
+    protected double remainingRequests;
 
     @Getter
-    protected int remainingSecsToResetLimit;
+    protected double remainingSecsToResetLimit;
 
     private static PixabayService pixabayService;
 
@@ -57,17 +57,17 @@ public class PixabayClient {
     private void parseRateLimit(Response response) {
         String value = response.headers().get("X-RateLimit-Limit");
         if (value != null && value.length() > 0) {
-            requestsLimitIn30min = Integer.parseInt(value);
+            requestsLimitIn30min = Double.parseDouble(value);
         }
 
         value = response.headers().get("X-RateLimit-Remaining");
         if (value != null && value.length() > 0) {
-            remainingRequests = Integer.parseInt(value);
+            remainingRequests = Double.parseDouble(value);
         }
 
         value = response.headers().get("X-RateLimit-Reset");
         if (value != null && value.length() > 0) {
-            remainingSecsToResetLimit = Integer.parseInt(value);
+            remainingSecsToResetLimit = Double.parseDouble(value);
         }
 
     }
